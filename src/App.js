@@ -49,12 +49,11 @@ function App() {
     }
   }
 
-  function updatePost(id) {
-    const allData = API.post.filter((item) => item.id === id);
-    setTitle(allData[0].title);
-    setBody(allData[0].body);
+  function updatePost(post) {
+    setTitle(post.title);
+    setBody(post.body);
     dispatch(updateCount(1));
-    setUpdateID(id);
+    setUpdateID(post.id);
   }
 
   function update(e) {
@@ -132,7 +131,7 @@ function App() {
               {post.id}. {post.title}
             </p>
             <p>{post.body}</p>
-            <button onClick={() => updatePost(post.id)}>Update</button>
+            <button onClick={() => updatePost(post)}>Update</button>
             <button onClick={() => deletePost(post.id)}>Delete</button>
           </div>
         );
